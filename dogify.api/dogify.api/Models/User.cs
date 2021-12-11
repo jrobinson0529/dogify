@@ -11,6 +11,6 @@ namespace dogify.api.Models
         public string GoogleId { get; set; }
         public string ImageUrl { get; set; }
         public string Username { get; set; }
-        public Guid DogBreedId { get; set; }
+        public Guid BreedId { get; set; }
     }
 }
