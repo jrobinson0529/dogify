@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using dogify.api.DataAccess;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace dogify.api.Controllers
 {
-    public class UserController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserController : ControllerBase
     {
+        UserRepository _userRepo;
+        public UserController(UserRepository userRepo)
+        {
+            _userRepo = userRepo;
+        }
         public IActionResult Index()
         {
-            return View();
+            return Ok();
         }
     }
 }

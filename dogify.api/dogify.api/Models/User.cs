@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace dogify.api.Models
 {
-    public class Class
+    public class User
     {
+        public Guid Id { get; set; }
+        public string GoogleId { get; set; }
+        public string ImageUrl { get; set; }
+        public string Username { get; set; }
+        public Guid DogBreedId { get; set; }
     }
 }
