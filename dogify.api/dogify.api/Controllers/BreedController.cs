@@ -16,9 +16,19 @@ namespace dogify.api.Controllers
         {
             _breedRepo = breedRepo;
         }
+        [HttpGet]
         public IActionResult Index()
         {
-            return Ok();
+            return Ok(_breedRepo.GetAll());
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetSingleBreed(Guid id)
+        {
+            var breed = _breedRepo.GetById(id);
+
+            if (breed is null) return NotFound($"No user with id - {id} exists in the database");
+
+            return Ok(breed);
         }
     }
 }

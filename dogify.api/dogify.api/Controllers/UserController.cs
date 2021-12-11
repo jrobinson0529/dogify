@@ -1,4 +1,5 @@
 ﻿using dogify.api.DataAccess;
+using dogify.api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,35 @@ namespace dogify.api.Controllers
         {
             _userRepo = userRepo;
         }
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult GetAllUsers()
         {
-            return Ok();
+            return Ok(_userRepo.GetAll());
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetSingleUser(Guid id)
+        {
+            var user = _userRepo.GetUserById(id);
+
+            if (user is null) return NotFound($"No user with id - {id} exists in the database");
+
+            return Ok(user);
+        }
+        [HttpPost]
+        public IActionResult AddSingleUser(User user)
+        {
+            // We potentially want to add checks here to make sure the relevant user information is filled out such as
+            _userRepo.Add(user);
+            return Created($"/users/{user.Id}", user);
+        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateUser(Guid id, User user)
+        {
+            var userToUpdate = _userRepo.GetUserById(id);
+            if (userToUpdate is null) return NotFound($"No user with id - {id} exists in the database");
+
+            var updatedUser = _userRepo.Update(id, user);
+            return Ok(updatedUser);
         }
     }
 }
