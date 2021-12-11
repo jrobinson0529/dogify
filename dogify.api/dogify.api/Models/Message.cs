@@ -11,6 +11,5 @@ namespace dogify.api.Models
         public Guid UserId { get; set; }
         public string messageText { get; set; }
         public DateTime messageTime { get; set; }
-
     }
 }
