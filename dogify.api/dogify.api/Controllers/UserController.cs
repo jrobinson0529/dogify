@@ -31,6 +31,15 @@ namespace dogify.api.Controllers
 
             return Ok(user);
         }
+        [HttpGet("google-id/{id}")]
+        public IActionResult GetSingleUserByGoogleId(string id)
+        {
+            var user = _userRepo.GetUserByGoogleId(id);
+
+            if (user is null) return Ok(null);
+
+            return Ok(user);
+        }
         [HttpPost]
         public IActionResult AddSingleUser(User user)
         {
