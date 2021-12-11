@@ -35,12 +35,21 @@ namespace dogify.api.DataAccess
             return user;
         }
 
+        internal object GetUserByGoogleId(string id)
+        {
+            using var db = new SqlConnection(_connectionString);
+            var sql = @"SELECT * FROM Users
+                        WHERE GoogleId = @id";
+            var user = db.QuerySingleOrDefault<User>(sql, new { id });
+            return user;
+        }
+
         internal Guid Add(User user)
         {
             using var db = new SqlConnection(_connectionString);
-            var sql = @"INSERT INTO Users(ImageUrl, Username, GoogleId, BreedId)
+            var sql = @"INSERT INTO Users(ImageUrl, Username, GoogleId)
                         OUTPUT INSERTED.id
-                        VALUES(@imageUrl, @username, @googleId, @breedId)";
+                        VALUES(@imageUrl, @username, @googleId)";
             var id = db.ExecuteScalar<Guid>(sql, user);
             user.Id = id;
 
