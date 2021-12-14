@@ -1,0 +1,16 @@
+@import 'variables';
+
+.title {
+  font-family: $titleFont;
+  font-size: 5em;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+.login-card {
+  border: transparent !important;
+  background-color: transparent !important;
+}

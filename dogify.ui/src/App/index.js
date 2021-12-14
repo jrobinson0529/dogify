@@ -34,9 +34,11 @@ function App() {
   return (
     <div className='App'>
      <Router>
-        <NavBar user={user}/>
+       {
+         user !== null && user.breedId !== '00000000-0000-0000-0000-000000000000' ? <NavBar user={user}/> : ''
+       }
         <Routes user={user}/>
-      </Router>
+     </Router>
     </div>
   );
 }
