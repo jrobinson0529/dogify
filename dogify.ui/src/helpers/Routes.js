@@ -6,12 +6,12 @@ import Login from '../views/Login';
 import PersonalityTestPage from '../views/PersonalityTest';
 import Users from '../views/Users';
 
-function Routes({ user }) {
+function Routes({ user, setUser }) {
   return (
     <>
       <Switch>
         <Route exact path="/login" component={() => <Login user={user}/>} />
-        <PrivateRoute exact path="/" component={() => <PersonalityTestPage user={user} />} user={user}/>
+        <PrivateRoute exact path="/" component={() => <PersonalityTestPage user={user} setUser={setUser}/>} user={user}/>
         <PrivateRoute exact path="/users" component={() => <Users user={user} />} user={user}/>
       </Switch>
     </>
@@ -20,5 +20,6 @@ function Routes({ user }) {
 Routes.propTypes = {
   user: PropTypes.any,
   time: PropTypes.string,
+  setUser: PropTypes.func,
 };
 export default Routes;
