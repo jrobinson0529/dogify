@@ -13,7 +13,7 @@ const getSingleUserByGoogleId = (id) => new Promise((resolve, reject) => {
   axios.get(`${url}/User/google-id/${id}`).then((response) => resolve(response.data)).catch(reject);
 });
 const updateUser = (id, userObject) => new Promise((resolve, reject) => {
-  axios.put(`${url}/User/${id}`, userObject).then((response) => resolve(response)).catch(reject);
+  axios.put(`${url}/User/${id}`, userObject).then((response) => resolve(response.data)).catch(reject);
 });
 
 export {

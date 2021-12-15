@@ -37,7 +37,7 @@ function App() {
        {
          user !== null && user.breedId !== '00000000-0000-0000-0000-000000000000' ? <NavBar user={user}/> : ''
        }
-        <Routes user={user}/>
+        <Routes user={user} setUser={setUser}/>
      </Router>
     </div>
   );
