@@ -19,16 +19,16 @@ const NavBar = ({ user }) => {
 
   return (
     <div>
-      <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">Home</NavbarBrand>
+      <Navbar className='navbar' dark expand="md">
+        <NavbarBrand href="/">Dogify</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link className="nav-link" to="/about">About</Link>
+              <Link className="nav-link" to={`/user/${user.id}`}>Profile</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/users">Users</Link>
+              <Link className="nav-link" to="/dogpark">Park</Link>
             </NavItem>
           </Nav>
           { user !== null

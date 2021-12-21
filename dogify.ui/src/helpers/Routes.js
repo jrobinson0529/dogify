@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PrivateRoute from './PrivateRoute';
 import Login from '../views/Login';
 import PersonalityTestPage from '../views/PersonalityTest';
-import Users from '../views/Users';
+import Profile from '../views/Profile';
 
 function Routes({ user, setUser }) {
   return (
@@ -12,7 +12,7 @@ function Routes({ user, setUser }) {
       <Switch>
         <Route exact path="/login" component={() => <Login user={user}/>} />
         <PrivateRoute exact path="/" component={() => <PersonalityTestPage user={user} setUser={setUser}/>} user={user}/>
-        <PrivateRoute exact path="/users" component={() => <Users user={user} />} user={user}/>
+        <PrivateRoute exact path="/user/:id" component={() => <Profile user={user} setUser={setUser}/>} user={user}/>
       </Switch>
     </>
   );
