@@ -3,6 +3,9 @@ import apiConfig from '../apiKeys';
 
 const url = apiConfig.apiUrl;
 
+const getUsers = () => new Promise((resolve, reject) => {
+  axios.get(`${url}/User`).then((response) => resolve(response.data)).catch(reject);
+});
 const createUser = (userInfoObject) => new Promise((resolve, reject) => {
   axios.post(`${url}/User`, userInfoObject).then((response) => resolve(response.data)).catch(reject);
 });
@@ -20,5 +23,6 @@ export {
   getSingleUserByGoogleId,
   createUser,
   getSingleUserById,
-  updateUser
+  updateUser,
+  getUsers,
 };
