@@ -56,3 +56,10 @@ body {
 .navbar {
   background: $bg-secondary;
 }
+.cont {
+  display: flex;
+  width: 75%;
+}
+.dog-card {
+   height: 300px;
+}
